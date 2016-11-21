@@ -1,8 +1,11 @@
 package dao.jdbc;
 
 
+import bilderreport.html.HTMLReportBuilder;
 import dao.QueryReader;
 import domain.DataForReportSalary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import utils.Range;
 
 import java.sql.Connection;
@@ -11,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class QuerySalaryReader implements QueryReader {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(HTMLReportBuilder.class);
     private final Connection connection;
 
     public QuerySalaryReader(Connection connection) {
@@ -28,16 +31,15 @@ public class QuerySalaryReader implements QueryReader {
 
         try (PreparedStatement ps = connection.prepareStatement(sqlQuery); ResultSet results = ps.executeQuery();) {
 
-            ps.setString(0, departmentId);
-            ps.setDate(1, new java.sql.Date(date.getFrom().toEpochDay()));
-            ps.setDate(2, new java.sql.Date(date.getTo().toEpochDay()));
+            ps.setString(1, departmentId);
+            ps.setDate(2, new java.sql.Date(date.getFrom().toEpochDay()));
+            ps.setDate(3, new java.sql.Date(date.getTo().toEpochDay()));
             while (results.next()) {
                 dataReport.add(results.getString("emp_name"), results.getDouble("salary"));
             }
         } catch (SQLException e) {
-            System.out.println("Error");
-            e.printStackTrace();
-        }
+            LOGGER.error("Can't create report from DB", e);
+         }
         return dataReport;
     }
 }

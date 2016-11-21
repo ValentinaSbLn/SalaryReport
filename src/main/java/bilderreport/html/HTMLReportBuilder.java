@@ -7,14 +7,17 @@ import domain.FieldOperation;
 import domain.OperationWithField;
 
 import java.lang.reflect.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static domain.OperationWithField.*;
 
 
 public class HTMLReportBuilder extends tagHTML implements ReportBuilder {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HTMLReportBuilder.class);
     private final StringBuilder resultingHtml = new StringBuilder();
     private final DataForReportSalary dataReport;
-    private final static OperationWithField VALUE = TOTAL;
+    private static final  OperationWithField VALUE = TOTAL;
 
     public HTMLReportBuilder(DataForReportSalary dataReport) {
         this.dataReport = dataReport;
@@ -42,11 +45,12 @@ public class HTMLReportBuilder extends tagHTML implements ReportBuilder {
     }
 
     private String titleTable(String... titles) {
-        String titleLine = "";
+
+        StringBuilder titleLine = new StringBuilder();
         for (String title : titles) {
-            titleLine += beginColumn() + title + endColumn();
+            titleLine.append( beginColumn() + title + endColumn());
         }
-        return titleLine;
+        return titleLine.toString();
     }
 
     private void addRowWithAnnotation() {
@@ -86,7 +90,7 @@ public class HTMLReportBuilder extends tagHTML implements ReportBuilder {
             return t;
 
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+            LOGGER.error("Error in method witw reflaction", e);
             return t;
         }
     }

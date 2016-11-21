@@ -8,7 +8,19 @@
     <artifactId>salaryreport</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.4</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -46,6 +58,8 @@
         <artifactId>mockito-core</artifactId>
         <version>1.10.19</version>
     </dependency>
+
+
 </dependencies>
 
     <build>
