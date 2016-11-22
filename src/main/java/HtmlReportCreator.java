@@ -8,12 +8,13 @@ import notifier.mailnotifier.MailNotifier;
 
 import java.sql.Connection;
 
-public class HtmlReportCreator implements ReportCreator{
+public class HtmlReportCreator implements ReportCreator {
     private final Connection connection;
     private String host;
+
     public HtmlReportCreator(Connection connection, String host) {
         this.connection = connection;
-        this.host=host;
+        this.host = host;
     }
 
     public QueryReader createData() {
