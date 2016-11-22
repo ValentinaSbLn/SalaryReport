@@ -1,6 +1,6 @@
 package dao;
 
-import domain.DataForReportSalary;
+import datareport.DataForReportSalary;
 import utils.Range;
 
 public interface QueryReader {

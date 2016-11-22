@@ -2,15 +2,15 @@ package bilderreport.html;
 
 
 import bilderreport.ReportBuilder;
-import domain.DataForReportSalary;
-import domain.FieldOperation;
-import domain.OperationWithField;
+import datareport.DataForReportSalary;
+import datareport.FieldOperation;
+import datareport.OperationWithField;
 
 import java.lang.reflect.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static domain.OperationWithField.*;
+import static datareport.OperationWithField.*;
 
 
 public class HTMLReportBuilder extends tagHTML implements ReportBuilder {

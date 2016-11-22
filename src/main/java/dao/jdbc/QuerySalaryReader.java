@@ -3,7 +3,7 @@ package dao.jdbc;
 
 import bilderreport.html.HTMLReportBuilder;
 import dao.QueryReader;
-import domain.DataForReportSalary;
+import datareport.DataForReportSalary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Range;

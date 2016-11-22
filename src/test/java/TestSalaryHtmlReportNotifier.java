@@ -1,6 +1,6 @@
 import bilderreport.ReportBuilder;
 import bilderreport.html.HTMLReportBuilder;
-import domain.DataForReportSalary;
+import datareport.DataForReportSalary;
 import dao.QueryReader;
 import dao.jdbc.QuerySalaryReader;
 import notifier.Notifier;
